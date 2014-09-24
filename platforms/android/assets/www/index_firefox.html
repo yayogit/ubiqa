@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ubiqarama</title>
+
+    <!-- Bootstrap -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- theme css // tema del la app -->
+    <link href="assets/css/theme.css" rel="stylesheet">
+    <link href="assets/css/icons.css" rel="stylesheet">
+    
+
+    <link href="assets/css/simple-sidebar.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="js/medium-editor/css/medium-editor.css"> <!-- Core -->
+	<link rel="stylesheet" href="js/medium-editor/css/themes/default.css"> <!-- or any other theme -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery/jquery.mobile-1.4.2.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="dist/js/bootstrap.min.js"></script>
+    
+
+    <!-- Custom JavaScript for Masonry -->
+    <script src="assets/js/masonry.js"></script>
+    <script src="assets/js/imagesloaded.js"></script>
+    <script src="assets/js/dotdotdot.js"></script>
+
+    <!-- Pop Up JS -->
+    <link href="assets/css/popup.css" rel="stylesheet">
+    <script src="assets/js/popup.js"></script>
+    
+    <!--  truncating character with ellipsis -->
+    <script src="assets/js/succinct.js"></script>
+  
+    
+    <script src="assets/audiojs/audio.min.js"></script>
+    
+    
+<!-- YYY Carga de scripts  -->
+    <script src="js/openlayers/OpenLayers.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
+    <script src="js/ddc_phonegap_utils.js"></script>
+    <script src="js/config_ubiqarama.js"></script>
+    <script src="js/model_ubiqarama.js"></script>
+    <script src="js/utils_ubiqarama.js"></script>
+    <script src="js/api_ubiqarama.js"></script>
+    <script src="js/utils_render.js"></script>
+    <script src="js/utils_openlayers.js"></script>
+    <script src="js/medium-editor/js/medium-editor.js"></script>
+    
+<!-- Fin YYY Carga de scripts  -->
+    
+    <!-- Run in full-screen mode. -->
+    <meta name="apple-mobile-web-app-capable" 
+          content="yes">
+
+    <!-- Make the status bar black with white text. -->
+    <meta name="apple-mobile-web-app-status-bar-style" 
+          content="black-translucent" >
+
+    <!-- Customize home screen title. -->
+    <meta name="apple-mobile-web-app-title" 
+          content="Ubiqarama">
+
+    <!-- Disable phone number detection. -->
+    <meta name="format-detection" 
+          content="telephone=no">
+
+    <!-- Set viewport. -->
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Prevent text size adjustment on orientation change. -->
+    <style>html { -webkit-text-size-adjust: 100%; }</style>
+    
+
+
+    <title>Ubiqarama</title>
+ 
+    <!-- Icons -->
+    
+    <link rel="icon" href="assets/images/favicon.png">
+        
+    <!-- iOS 7 iPad (retina) -->
+    <link href="assets/images/apple-touch-icon-152x152.png"
+          sizes="152x152"
+          rel="apple-touch-icon">
+
+    <!-- iOS 7 iPhone (retina) -->
+    <link href="assets/images/apple-touch-icon-120x120.png"
+          sizes="120x120"
+          rel="apple-touch-icon">
+    <!-- iOS 7 iPad -->
+    <link href="assets/images/apple-touch-icon-76x76.png"
+          sizes="76x76"
+          rel="apple-touch-icon">
+ 
+ 
+    <!-- Startup images -->
+
+    <!-- iPhone 5 -->
+		<link 	href="assets/images/startup-iphone5@2x.png"
+      			media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+      			rel="apple-touch-startup-image">		
+		<!-- iPhone -->
+		<link 	href="assets/images/startup-iphone.png"
+      			media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)"
+      			rel="apple-touch-startup-image">	
+		<!-- iPhone (Retina) -->
+		<link 	href="assets/images/startup-iphone@2x.png"
+      			media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"
+      			rel="apple-touch-startup-image">
+    
+  </head>
+  <body onload="init();">
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+        	<div class='avatar' style="background: url('assets/images/no-avatar.png') center center; background-size: cover">
+            </div>
+            <ul class="sidebar-nav">
+            	
+                <li class="sidebar-brand">
+                <a id="link_user_alias" href="#">sin iniciar</a>
+                </li>
+                <li class="proyectos"></li>                
+                <li><a href="javascript:window.location='ayuda.html';">Más información</a>
+                <li><a href="javascript:logOut();"><span class="icon icon-icn-232"></span> cerrar sesión</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+
+            <!-- Keep all page content within the page-content inset div! -->
+            <div class="page-content inset">
+            	<header class="row toolbar">
+              		<h1 class="cabecera_cliente">
+              	 		<img src="assets/images/logo-ubiqarama.png">Ubiqarama
+              	 	</h1>
+                    <a id="menu-toggle" href="#" class="btn">
+                    	<span class="icon icon-icn-349"></span>
+                    </a>
+                    <a id="menu-map-toggle" href="#" class="btn">
+                    	<span class="icon icon-map"></span>
+                    </a>
+                </header>
+            <section class="container-fluid">
+                
+        	<header class="row">
+        		<figure class="introduccion">      
+                	
+                	<h2 class="project_name"></h2>
+                  <div class="info">
+                  	<p class="fecha"><span class="icon icon-clock"></span> </p>
+                  	
+                  	<p class="descripcion project_description"></p>
+                  </div>
+
+                	<aside>
+                		<p class="switcher">
+                			<a class="ocultar"><span class="icon icon-icn-202"></span> Mostrar filtros </a>
+                			<a class="ocultar hidden"><span class="icon icon-icn-203"></span> Ocultar filtros </a>
+                		</p>
+
+                		<p class="labels cerrado">
+
+                        <a class="author btn btn-default icon icon-icn-247 active">imagen</a>
+                        <a class="author btn btn-default icon icon-icn-327 active">video</a>
+                        <a class="author btn btn-default icon icon-mic active">audio</a>		                    
+		                   
+	                	</p>
+	                </aside>
+
+
+				<div class="dropdown">
+				  <button class="btn btn-dark btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+				    Agregar cotenidos
+				    <span class="caret"></span>
+				  </button>
+				  <a class="btn btn-default btn-lg btn-editar">
+				  	<span class="icon icon-pencil"></span> 
+				  </a>
+				  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				    <li role="presentation">
+							<button class="" onclick="alert('psss');"><span class="icon icon-icn-247"></span> galería</button>
+						</li>
+						<li role="presentation">
+				         		<button class="" onclick="alert('psss');"><span class="icon icon-icn-327"></span> video</button>
+					</li>
+				         	<li role="presentation">
+				         		<button class="¡" onclick="alert('psss');"><span class="icon icon-mic"></span> audio</button>
+				    </li>
+				    <li role="presentation">
+				         		<button class="¡" onclick="alert('psss');"><span class="icon icon-icn-261"></span> cámara</button>
+				    </li>
+				  </ul>
+				  <script type="text/javascript">
+// 				  $('ul.dropdown-menu li').click(function (){
+// 					 alert("joder!"); 
+// 				  });
+				  </script>
+				  
+				  
+				  
+
+				  
+				  
+				</div>
+
+        		</figure>
+            </header>
+                 
+            <article class="row galeria">
+            	
+            </article>
+			
+            </section>
+        </div>
+
+        <!-- map wrapper -->
+		<div id="wrapper-map">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46486.912902853546!2d-2.9335644!3d43.26332349999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4e27664b89b9%3A0x6534acc41e95a645!2sBilbao%2C+Biscay!5e0!3m2!1sen!2ses!4v1408628377942" width="100%" height="100%" frameborder="0" style="border:0"></iframe>
+		</div>
+    </div>
+</div>
+
+    
+    <!-- Custom methods and inits -->
+    <script src="assets/js/app.js" type="text/javascript"></script>
+    
+    <!-- YYY -->
+	<script type="text/javascript">
+	
+		//Variables globales
+		var currentProjectID = 0;				//ID del proyecto que se esta mostrando actualmente
+		var currentProjectName = "";			//Nombre del proyecto que se esta mostrando actualmente
+		var projectDescriptions = new Array();	//Lista indexada de descripciones de los proyectos
+		var isEditing = false;					//Indica si se esta en modo alta/edicion o no
+		var tagList = null;						//Lista de etiquetas tematicas posibles
+
+		//Inicializar mapa de OpenLayers
+		var openLayersUtils = new OpenLayersUtils("map");
+	
+		/**
+		 * Obtiene informacion del usuario conectado y la lista de proyectos disponible
+		 */
+		function init(){
+			
+// 			ddcDialog.showProgress("Cargando...");
+			
+			//FAKE LOGIN
+			userUbiqarama.server = "http://0ub.simettric.com";
+			userUbiqarama.user = "ubiqa";
+			userUbiqarama.pwd = "4b1c4:";
+// 			userUbiqarama.user = "yahcov1401294977";
+// 			userUbiqarama.pwd = "dKeQHoE4UeVc";
+// 			alert("Fake Login!");
+// 			userUbiqarama.server = sessionStorage.getItem("server");
+// 			userUbiqarama.user = sessionStorage.getItem("user");
+// 			userUbiqarama.pwd = sessionStorage.getItem("pwd");	
+
+			var _fechaActual = "<span class='icon icon-clock'></span> "+getFecha();
+			$("p.fecha").html(_fechaActual);
+			
+			//Se obtiene la lista de etiquetas tematicas del servidor
+			tagListOK = function(result){
+				tagList = result;
+			}
+// 			APIcalls.getTags(tagListOK);
+			
+			
+			//Obtener info del usuario y mostrarla
+			doLogin = function(result){
+				userUbiqarama.user = result.user_login;
+				userUbiqarama.name = result.display_name;
+				userUbiqarama.user_id = result.user_id;
+				userUbiqarama.url_avatar = result.url;//result.url_avatar;
+				
+				$("a#link_user_alias").text(userUbiqarama.name);
+				$("div.avatar").css("background","url("+result.url_avatar+") center center");
+			}
+// 			APIcalls.login(doLogin);
+			
+			//Obtener configuracion del cliente y aplicarla
+			doConfig = function(result){
+				customerConfig.name = result.configuration['site_name'];
+				customerConfig.has_interview = result.configuration['has_interview'];
+				customerConfig.has_geo = result.configuration['has_geo'];
+				customerConfig.has_routes = result.configuration['has_routes'];
+				customerConfig.vimeo_api_token = result.configuration['vimeo_api_token'];
+				customerConfig.style_logo = result.styles['logo'];
+				customerConfig.style_h1_color = result.styles['h1_color'];
+				customerConfig.style_h2_color = result.styles['h2_color'];
+				customerConfig.style_h4_color = result.styles['h4_color'];
+				customerConfig.style_a_color = result.styles['a_color'];
+				customerConfig.style_button_color = result.styles['button_color'];
+				customerConfig.style_button_text_color = result.styles['button_text_color'];
+				
+				$("h1.cabecera_cliente").html("<h1 class='cabecera_cliente'><img src='"+customerConfig.style_logo+"'>"+customerConfig.name+"</h1>");
+			}
+// 			APIcalls.getConfig(doConfig);
+			
+			//Obtener lista de proyectos			
+			showProjects = function(pHTMLProyects, pFirstProjectId, pFirstProjectName, pProjectDescriptions){
+				var _htmlProyectos = pHTMLProyects;
+				$("li.proyectos").replaceWith(_htmlProyectos);
+				projectDescriptions = pProjectDescriptions;
+				ddcDialog.hideProgress();
+				//Mostrar contenidos del primer proyecto
+				loadProjectContents(pFirstProjectId, pFirstProjectName, false);				
+			}
+// 			renderProjects(showProjects);			
+			$.widget( "mobile.loader").html("");
+		}
+		
+		/**
+		 * Previa confirmacion, vuelve a la pantalla de login
+		 */
+		function logOut(){
+			function logout_onConfirm(pButtonIndex){
+					if(pButtonIndex == 1){
+						window.location='login.html';
+					}
+				}
+				var _botones = ["Si","No"];
+			navigator.notification.confirm("¿Quieres terminar esta sesion ?", logout_onConfirm,"Ubiqarama",_botones);
+		}
+		
+		/**
+		 * Muestra los contenidos del proyecto indicado
+		 *
+		 * @param pProjectId {String} Id del proyecto cuyos contenidos se quiere visualizar
+		 * @param pProjectName {String} Nombre del proyecto cuyos contenidos se quiere visualizar
+		 * @param pToggle {Boolean} Indica si se debe replegar el menu
+		 */
+		function loadProjectContents(pProjectId, pProjectName, pToggle){
+			ddcDialog.showProgress("Cargando Contenidos...");
+			
+			//Mostrar la informacion del proyecto actual
+			currentProjectID = pProjectId;
+			currentProjectName = pProjectName;
+			$("h2.project_name").html(currentProjectName);
+			$("p.project_description").html(projectDescriptions['id'+currentProjectID]);
+			
+			//Obtener los contenidos del proyecto
+			$("article.galeria").empty();
+			showContents = function(result){
+				var _htmlContents = renderContents(result);
+				$("article.galeria").append(_htmlContents);
+				
+				//Relinkar evento click para desplegable (copiado de 'app.js')				
+				$("article.galeria .info p").click(function(e) {
+					e.preventDefault();
+				    $(this).toggleClass("extendido");
+			        $(this).dotdotdot();
+				    $container.masonry({itemSelector: '.modulo',columnWidth: '.modulo',transitionDuration: 0});
+				});
+				//Linkar popup de visualizacion de videos
+				$('.video-link').magnificPopup({
+					type: 'inline',
+					midClick: true
+				})
+				
+				//Se repliega el menu
+				if(pToggle){$("div#wrapper").toggleClass("active")};
+				
+				ddcDialog.hideProgress();
+			}			 
+			APIcalls.getContents(pProjectId, showContents);			
+		}
+		 
+		 
+		/**
+		 * Inicia la captura multimedia del tipo especificado (imagen, audio o video) y muestra un editor de contenidos para
+		 * agregar toda la informacion relacionada con el nuevo contenido.
+		 *
+		 * @param pContentType {String} Tipo de contenido a capturar (audio, video o imagen)
+		 */
+		function addContent(pContentType){
+		alert("Entra en addContent");
+			if(isEditing){
+				ubiqaramaUtils.alert("Ya estas agregando otro contenido. Por favor finaliza la operacion actual antes de iniciar una nueva");
+				return;
+			}
+			isEditing = true;
+			console.log("Entra en agregar contenido - "+pContentType);
+			$("article.galeria").empty();
+			//Grabar el clip de audio
+			function capturaOK(pMediaFile){
+				//Mostrar interfaz de edicion		
+				var _htmlContentEditor = renderEditor(pContentType,pMediaFile.fullPath);
+				$("article.galeria").append(_htmlContentEditor);
+				getCoordenadas();
+				//Linkar popup de visualizacion de videos
+				$('.video-link').magnificPopup({
+					type: 'inline',
+					midClick: true
+				})
+				
+			}
+			function capturaError(error){
+				ubiqaramaUtils.alert("Error grabando " + pContentType + ", intentelo de nuevo");
+				isEditing = false;
+			}
+			console.log("antes de lanzar captura");
+			if(pContentType == "audio"){
+				ddcCaptureUtils.captureAudio(capturaOK, capturaError);	
+			}else if(pContentType == "image"){
+				ddcCaptureUtils.captureImage(capturaOK, capturaError);
+			}else if(pContentType == "video"){
+				ddcCaptureUtils.captureVideo(capturaOK, capturaError);
+			}else{
+				
+			}
+			
+		}
+		 
+		 
+		 $.widget( "mobile.loader").html("");
+	</script>
+	<!-- Fin YYY -->   
+	
+  </body>
+</html>
